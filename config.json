@@ -1,7 +1,7 @@
 {
   "detector": "venue_date",
   "movie": "Ramayana (IMAX 3D, Hindi)",
-  "requested_date": "20261115",
+  "requested_date": "20261121",
   "venue_code": "PVFF",
   "venue_label": "PVR Nexus (Forum), Koramangala",
   "url_template": "https://in.bookmyshow.com/movies/bengaluru/ramayana-imax-3dhindi/buytickets/ET00523158/{date}"
