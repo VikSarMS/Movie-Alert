@@ -44,11 +44,11 @@ After editing, reset `state.json` to `{"available": false}`.
 ```json
 {
   "detector": "venue_date",
-  "movie": "The Odyssey (IMAX 2D)",
-  "requested_date": "20260722",
-  "venue_code": "INPR",
-  "venue_label": "INOX: LUXE Phoenix Market City, Velachery",
-  "url_template": "https://in.bookmyshow.com/movies/chennai/the-odyssey/buytickets/ET00480917/{date}"
+  "movie": "Ramayana (IMAX 3D, Hindi)",
+  "requested_date": "20261121",
+  "venue_code": "PVFF",
+  "venue_label": "PVR Nexus (Forum), Koramangala",
+  "url_template": "https://in.bookmyshow.com/movies/bengaluru/ramayana-imax-3dhindi/buytickets/ET00523158/{date}"
 }
 ```
 Use `"venue_codes": ["PVPZ","INPR"]` to fire when *any* of several theatres open.
