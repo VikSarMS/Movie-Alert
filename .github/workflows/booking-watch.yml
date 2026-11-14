@@ -21,8 +21,6 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Check BookMyShow
-        id: bms
-        continue-on-error: true
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -30,27 +28,13 @@ jobs:
           PROXY_URL: ${{ secrets.PROXY_URL }}
         run: python poller.py
 
-      - name: Check District
-        id: district
-        continue-on-error: true
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          CONFIG_PATH: config_district.json
-          STATE_PATH: state_district.json
-        run: python poller.py
-
       - name: Save state
         run: |
-          if git diff --quiet -- state.json state_district.json; then
+          if git diff --quiet -- state.json; then
             echo "No state change"; exit 0
           fi
           git config user.name "booking-watch-bot"
           git config user.email "booking-watch-bot@users.noreply.github.com"
-          git add state.json state_district.json
+          git add state.json
           git commit -m "Update booking state [skip ci]"
           git push
-
-      - name: Report failure
-        if: steps.bms.outcome == 'failure' || steps.district.outcome == 'failure'
-        run: exit 1
